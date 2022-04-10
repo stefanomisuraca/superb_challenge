@@ -1,0 +1,26 @@
+{
+  "name": "superb-challenge",
+  "version": "1.0.0",
+  "description": "Superb Challenge API",
+  "main": "main.js",
+  "type": "module",
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/api/node_modules/"
+    ]
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Stefano",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.3",
+    "jest": "^27.5.1",
+    "mongodb": "^4.5.0",
+    "mongoose": "^6.2.10",
+    "nodemon": "^2.0.15",
+    "supertest": "^6.2.2"
+  }
+}

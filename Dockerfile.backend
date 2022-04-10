@@ -1,0 +1,9 @@
+FROM node:14.17.1-alpine3.12
+
+# set working directory
+WORKDIR /app
+
+# install app dependencies
+COPY ./api ./
+RUN npm install -y
+RUN npm install -g --save nodemon

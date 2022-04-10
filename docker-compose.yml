@@ -1,0 +1,26 @@
+version: "3.9"
+services:
+  api:
+    image: node:14-alpine
+    container_name: api
+    command: nodemon main.js
+    environment:
+      CHOKIDAR_USEPOLLING: "true"
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./api:/app
+      - /app/node_modules
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    ports:
+      - 27017:27017
+    volumes:
+      - ~/apps/mongo:/data/db
+volumes:
+  v1:
+  mongo:
