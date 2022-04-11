@@ -17,10 +17,9 @@ export function dbConnect() {
   });
 }
 
-
 const tableSchema = new mongoose.Schema({
-  restaurantId: {
-    type: mongoose.ObjectId,
+  shiftId: {
+    type: mongoose.Schema.Types.ObjectId, ref: 'Shift',
     required: true
   },
   seats: {
@@ -38,9 +37,26 @@ const tableSchema = new mongoose.Schema({
       required: true
     }
   }
-})
+});
 
 export const Table = mongoose.model("Table", tableSchema);
+
+const shiftSchema = new mongoose.Schema({
+  restaurant: {
+    type: mongoose.Schema.Types.ObjectId, ref: 'Restaurant',
+    required: true
+  },
+  start: {
+    type: Date,
+    required: true,
+  },
+  end: {
+    type: Date,
+    required: true,
+  },
+});
+
+export const Shift = mongoose.model("Shift", shiftSchema);
 
 const restaurantSchema = new mongoose.Schema({
     name: {
@@ -48,16 +64,7 @@ const restaurantSchema = new mongoose.Schema({
       required: true,
       unique: true
     },
-    workingHours: {
-      opening: {
-        type: Date,
-        required: true,
-      },
-      closing: {
-        type: Date,
-        required: true,
-      },
-    }
+    owner: String
   });
 
 export const Restaurant = mongoose.model("Restaurant", restaurantSchema);

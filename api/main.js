@@ -1,6 +1,7 @@
 import express from 'express';
 import { dbConnect } from './db.js';
-import restaurantRouter from './restaurants.js';
+import restaurantsRouter from './restaurants.js';
+import shiftsRouter from './shifts.js';
 export const app = express()
 
 app.get('/', async function (req, res) {
@@ -9,8 +10,8 @@ app.get('/', async function (req, res) {
 
 app.use(express.urlencoded());
 app.use(express.json());
-app.use("/restaurants", restaurantRouter);
-
+app.use("/restaurants", restaurantsRouter);
+app.use("/shifts", shiftsRouter);
 app.listen(8080);
 
 dbConnect();

@@ -1,22 +1,21 @@
 import express from 'express'
 import { Restaurant } from './db.js';
 
-var restaurantRouter = express.Router();
+var restaurantsRouter = express.Router();
 
-restaurantRouter.get("/", async (req, res) => {
+restaurantsRouter.get("/", async (req, res) => {
     if(req.query.name) {
         const name = req.query.name;
         res.send(await Restaurant.find({name}));
     } else {
-
+        res.send(await Restaurant.find({}));
     }
-    res.send(await Restaurant.find({}));
 });
 
-restaurantRouter.post("/", async (req, res) => {
-    const body = req.body;
-    const newRestaurant = await Restaurant.create(req.body);
+restaurantsRouter.post("/", async (req, res) => {
+    let body = req.body;
+    const newRestaurant = await Restaurant.create(body);
     res.json(newRestaurant);
 });
 
-export default restaurantRouter;
+export default restaurantsRouter;
