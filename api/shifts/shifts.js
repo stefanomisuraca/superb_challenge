@@ -1,6 +1,6 @@
 import express from 'express'
-import { Shift } from './schemas.js';
 import moment from 'moment';
+import Shift from './shiftsSchema.js';
 
 var shiftsRouter = express.Router();
 

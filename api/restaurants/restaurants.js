@@ -1,5 +1,5 @@
 import express from 'express'
-import { Restaurant } from './schemas.js';
+import Restaurant from './restaurantsSchema.js';
 
 var restaurantsRouter = express.Router();
 

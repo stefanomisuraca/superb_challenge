@@ -1,5 +1,5 @@
 import express from 'express'
-import { Table } from './schemas.js';
+import Table from './tableSchema.js';
 import moment from 'moment';
 
 var tablesRouter = express.Router();
@@ -18,10 +18,10 @@ tablesRouter.post("/", async (req, res) => {
    }
 });
 
-tablesRouter.get("/shifts/:id", async (req, res) => {
+tablesRouter.get("/restaurants/:id", async (req, res) => {
     try{
-        let shifts = await Table.find({shift: req.params.id}).populate("shift");
-        res.json(shifts);
+        let tables = await Table.find({restaurant: req.params.id}).populate("restaurant");
+        res.json(tables);
     } catch(e) {
         res.status(500);
         res.json(e);

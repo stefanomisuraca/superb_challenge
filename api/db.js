@@ -1,5 +1,7 @@
 import mongoose from 'mongoose';
 
+mongoose.set('runValidators', true);
+
 export function dbConnect() {
     
   mongoose.connect('mongodb://mongodb:27017/superb',
