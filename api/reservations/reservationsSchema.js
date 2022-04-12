@@ -39,9 +39,6 @@ const isReservedOneHour = reservation => moment.duration(moment(reservation.rese
 reservationSchema.pre("save", async function(next) {
     let errors = [];
     
-    // Validate reservation time range
-    // console.log(this);
-    // console.log("PATATE");
     const shift = await Shift.findById(this.shift);
     const table = await Table.findById(this.table);
 
@@ -53,11 +50,7 @@ reservationSchema.pre("save", async function(next) {
     if(!(this.reservedFrom < this.reservedTo)) errors.push("Reversation start is bigger than end");
     if(this.customers > table.seats) errors.push("Too many customer for this table");
     
-    if(errors.length > 0) {
-        next(errors);
-    } else {
-        next();
-    }
+    errors.length > 0 ? next(errors) : next();
 });
 
 const Reservation = mongoose.model("Reservation", reservationSchema);

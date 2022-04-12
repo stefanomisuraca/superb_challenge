@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 mongoose.set('runValidators', true);
 
-export function dbConnect() {
+function dbConnect() {
     
   mongoose.connect('mongodb://mongodb:27017/superb',
       {
@@ -18,3 +18,5 @@ export function dbConnect() {
     return db;
   });
 }
+
+export default dbConnect;

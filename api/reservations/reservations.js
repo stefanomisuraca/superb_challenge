@@ -57,7 +57,7 @@ reservationsRouter.post("/", async (req, res) => {
 });
 
 reservationsRouter.patch("/:id", async (req, res) => {
-    var reservation = await Reservation.findById(req.params.id);
+    let reservation = await Reservation.findById(req.params.id);
     console.log(reservation);
     
     for(const [k, v] of Object.entries(req.body)) reservation[k] = v;
@@ -69,5 +69,16 @@ reservationsRouter.patch("/:id", async (req, res) => {
         res.json(e);
     });
 });
+
+reservationsRouter.delete("/:id", async (req, res) => {
+    try {
+        Reservation.deleteOne({_id: req.params.id});
+        res.status(201);
+        res.json();
+    } catch (e) {
+        res.status(401);
+        res.json(e);
+    }
+})
 
 export default reservationsRouter;
