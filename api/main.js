@@ -1,13 +1,14 @@
 import express from 'express';
-import { dbConnect } from './db.js';
 import restaurantsRouter from './restaurants/restaurants.js';
 import shiftsRouter from './shifts/shifts.js';
 import tablesRouter from './tables/tables.js';
 import reservationsRouter from './reservations/reservations.js';
-export const app = express()
+import dbConnect from './db.js';
+
+const app = express()
 
 app.get('/', async function (req, res) {
-  res.send("home");
+  res.send("Superb!");
 });
 
 app.use(express.urlencoded());
@@ -16,6 +17,11 @@ app.use("/restaurants", restaurantsRouter);
 app.use("/shifts", shiftsRouter);
 app.use("/tables", tablesRouter);
 app.use("/reservations", reservationsRouter);
-app.listen(8080);
+
+if(process.env.JEST_WORKER_ID == undefined) {
+  app.listen(8080);
+}
 
 dbConnect();
+
+export default app;

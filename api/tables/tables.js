@@ -47,7 +47,6 @@ tablesRouter.delete("/:id", async (req, res) => {
         res.status(400);
         res.json(e.message);
     }
-
 });
 
 export default tablesRouter;
