@@ -1,5 +1,5 @@
 import express from 'express'
-import { Shift } from './db.js';
+import { Shift } from './schemas.js';
 import moment from 'moment';
 
 var shiftsRouter = express.Router();

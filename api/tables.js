@@ -1,5 +1,5 @@
 import express from 'express'
-import { Table } from './db.js';
+import { Table } from './schemas.js';
 import moment from 'moment';
 
 var tablesRouter = express.Router();
