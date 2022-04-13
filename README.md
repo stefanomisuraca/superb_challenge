@@ -7,11 +7,11 @@
 
 <h3>How to install</h3>
 <p>The only requirement is Docker.</p>
-<p>You can install docker from [Get Docker] (https://docs.docker.com/get-docker/)</p>
+<p>You can install docker from [Get Docker](https://docs.docker.com/get-docker/)</p>
 
 How to run the system:
 <ol>
-    <li>Clone the repository from [Github Repo] (https://github.com/stefanomisuraca/superb_challenge)</li>
+    <li>Clone the repository from [Github Repo](https://github.com/stefanomisuraca/superb_challenge)</li>
     <li>Open a terminal instance and move into the repository folder</li>
     <li>use the command `docker-compose build && docker-compose up`</li>
     <li>Wait for the system to start</li>
@@ -59,7 +59,7 @@ They are linked to a shift and to a table.
 
 <h3>API specifications</h3>
 <p>
-The api is located at [localhost] http://localhost:8080</p>
+The api is located at [localhost](http://localhost:8080)</p>
 
 </p>
 Restaurants enpoint is /restaurants </br>
@@ -112,7 +112,7 @@ Reservations enpoint is /reservations </br>
 `POST /reservations` create a new reservations</br>
 `DELETE /reservations/:id` delete a specific reservation</br>
 </br>
-POST payload is:
+POST payload is:</br>
 ```{
     "shift": "62568f68a397656fe6bd8cbb",
     "table": "62568f9ea397656fe6bd8ccd",
@@ -120,6 +120,7 @@ POST payload is:
     "reservedFrom": "2022-05-12 13:30",
     "reservedTo": "2022-05-12 14:30"
 }```
+</br>
 PATCH payload is:
 ```{
     "shift": "62568f68a397656fe6bd8cbb",
