@@ -19,7 +19,7 @@ shiftsRouter.post("/", async (req, res) => {
 
 shiftsRouter.get("/:id", async (req, res) => {
     try {
-        const shift = await Shift.findById(req.params.id.populate("restaurant"));
+        const shift = await Shift.findById(req.params.id).populate("restaurant");
         res.json(shift);
     } catch(e) {
         res.status(404)
@@ -39,7 +39,7 @@ shiftsRouter.get("/", async (req, res) => {
 
 shiftsRouter.get("/restaurants/:id", async (req, res) => {
     try {
-        let shifts = await Shift.find({restaurantId: req.params.id}).populate("restaurant");
+        let shifts = await Shift.find({restaurant: req.params.id}).populate("restaurant");
         res.json(shifts);
     } catch(e) {
         res.status(500);

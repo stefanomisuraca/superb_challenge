@@ -7,6 +7,17 @@ restaurantsRouter.get("/", async (req, res) => {
     res.json(await Restaurant.find({}));
 });
 
+restaurantsRouter.get("/:id", async (req, res) => {
+    try {
+        const restaurant = await Restaurant.findById(req.params.id);
+        res.json(restaurant);
+    } catch (e) {
+        res.status(404);
+        res.json();
+    }
+
+});
+
 restaurantsRouter.post("/", async (req, res) => {
     let body = req.body;
     try {
