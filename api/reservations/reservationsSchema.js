@@ -51,7 +51,7 @@ reservationSchema.pre("save", async function(next) {
     if(!shiftTime.contains(reservationTime)) errors.push("reserved time must be within shift range");
     if(!isReservedOneHour(this)) errors.push("reservation must be exactly one hour");
     if(!(this.reservedFrom < this.reservedTo)) errors.push("Reversation start is bigger than end");
-    if(this.customers > table.seats) errors.push("Too many customer for this table");
+    if(this.customers > table.seats) errors.push("Too many customers for this table");
     for(let i=0; i<reservations.length; i++) {
         const thisTableTime = moment.range(this.reservedFrom, this.reservedTo);
         const tableTime = moment.range(reservations[i].reservedFrom, reservations[i].reservedTo);

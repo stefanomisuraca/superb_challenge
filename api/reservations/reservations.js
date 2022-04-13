@@ -7,7 +7,7 @@ reservationsRouter.get("/:id", async (req, res) => {
     try {
         res.json(await Reservation.findById(req.params.id));
     } catch(e) {
-        res.status(400);
+        res.status(404);
         res.json(e);
     }
 });
@@ -27,7 +27,8 @@ reservationsRouter.get("/", async (req, res) => {
                 path: 'restaurant',
                 model: 'Restaurant'
             } 
-    }));
+        })
+    );
     } catch(e) {
         res.status(400);
         res.json(e);
@@ -64,9 +65,9 @@ reservationsRouter.post("/", async (req, res) => {
         reservation.save()
             .then(newReservation => res.json(newReservation))
             .catch(e => {
-                console.log(e);
+                res.status(400);
                 res.json(e)
-            });
+        });
 });
 
 reservationsRouter.patch("/:id", async (req, res) => {

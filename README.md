@@ -153,6 +153,17 @@ It is also possible to get all of the above data
 </p>
 
 
+<h3>How to run Tests</h3>
+<ol>
+    <li>Open a terminal and move to the folder "dbTestDump"</li>
+    <li>Run the command "sh importTestData.sh"</li>
+    <li>Run the command "docker exec -it api sh" so you enter the container</li>
+    <li>Run npm test inside the container</li>
+    <li>(Optional) Exit the container (exit command)</li>
+    <li>(Optional) Re run the importTestData script to clean up the test databse</li>
+</ol>
+
+
 <h3>What's missing</h3>
 <p>To keep things simple and due to time limit some behaviours are not implemented.</p>
 <p>Some delete actions do not cascade to other references, like tables for example</p>
