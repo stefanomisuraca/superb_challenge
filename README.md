@@ -1,5 +1,3 @@
-# superb_challenge
-
 <h1>Superb Challenge</h1>
 
 <h2>Considerations:</h2>
