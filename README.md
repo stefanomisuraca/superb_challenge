@@ -62,71 +62,72 @@ They are linked to a shift and to a table.
 The api is located at [localhost] http://localhost:8080</p>
 
 </p>
-Restaurants enpoint is /restaurants
-`GET /restaurants` returns all restaurants
-`GET /restaurants/:name` returns a specific restaurant by name
-`POST /restaurants` create a new restaurant
-POST payload is:
-`{   
+Restaurants enpoint is /restaurants </br>
+`GET /restaurants` returns all restaurants </br>
+`GET /restaurants/:name` returns a specific restaurant by name </br>
+`POST /restaurants` create a new restaurant </br>
+POST payload is: </br>
+```{   
     "name": "name",
     "owner": "ownerName"
-}`
+}```
 </p>
 <p>
-Shifts enpoint is /shifts
-`GET /shifts` returns all shifts
-`GET /shifts/:id` returns a specific shift by id
-`GET /shifts/restaurants/:id` return all shifts for a specific restaurant
-`POST /shifts` create a new shift
-POST payload is:
-`{
+Shifts enpoint is /shifts </br>
+`GET /shifts` returns all shifts</br>
+`GET /shifts/:id` returns a specific shift by id</br>
+`GET /shifts/restaurants/:id` return all shifts for a specific restaurant</br>
+`POST /shifts` create a new shift</br>
+POST payload is:</br>
+```{
     "restaurant": "62568f14a397656fe6bd8cac",
     "start": "2022-05-12 10:00",
     "end": "2022-05-12 16:00"
-}`
+}```
 </p>
 <p>
-Tables enpoint is /tables
-`GET /tables` returns all tables
-`GET /tables/:id` returns a specific table by id
-`GET /tables/restaurants/:id` return all tables for a specific restaurant
-`DELETE` /tables/:id delete a specific table
-`POST /tables` create a new table
-POST payload is:
-`{
+Tables enpoint is /tables </br>
+`GET /tables` returns all tables </br>
+`GET /tables/:id` returns a specific table by id</br>
+`GET /tables/restaurants/:id` return all tables for a specific restaurant</br>
+`DELETE` /tables/:id delete a specific table</br>
+`POST /tables` create a new table</br>
+POST payload is:</br>
+```{
     "seats": 10,
     "restaurant": "62568f14a397656fe6bd8cac"
-}`
+}```
+</br>
 PATCH payload is:
-`{
+```{
     "seats": 8,
     "restaurant": "62568f14a397656fe6bd8cac"
-}`
+}```
 </p>
 <p>
-Reservations enpoint is /reservations
-`GET /reservations` returns all reservations
-`GET /reservations/:id` returns a specific reservation by id
-`GET /reservations/shifts/:id` return all reservations for a specific shift
-`POST /reservations` create a new reservations
-`DELETE /reservations/:id` delete a specific reservation
-
+Reservations enpoint is /reservations </br>
+`GET /reservations` returns all reservations</br>
+`GET /reservations/:id` returns a specific reservation by id</br>
+`GET /reservations/shifts/:id` return all reservations for a specific shift</br>
+`POST /reservations` create a new reservations</br>
+`DELETE /reservations/:id` delete a specific reservation</br>
+</br>
 POST payload is:
-`{
+```{
     "shift": "62568f68a397656fe6bd8cbb",
     "table": "62568f9ea397656fe6bd8ccd",
     "customers": 6,
     "reservedFrom": "2022-05-12 13:30",
     "reservedTo": "2022-05-12 14:30"
-}`
+}```
 PATCH payload is:
-`{
+```{
     "shift": "62568f68a397656fe6bd8cbb",
     "table": "62568f9ea397656fe6bd8ccd",
     "customers": 8,
     "reservedFrom": "2022-05-12 12:30",
     "reservedTo": "2022-05-12 13:30"
-}`
+}```
 </p>
 
 <h3>Validation</h3>
