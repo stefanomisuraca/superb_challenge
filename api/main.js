@@ -3,7 +3,7 @@ import restaurantsRouter from './restaurants/restaurants.js';
 import shiftsRouter from './shifts/shifts.js';
 import tablesRouter from './tables/tables.js';
 import reservationsRouter from './reservations/reservations.js';
-import dbConnect from './db.js';
+import {dbConnect, dbConnectTest} from './db.js';
 
 const app = express()
 
@@ -20,8 +20,9 @@ app.use("/reservations", reservationsRouter);
 
 if(process.env.JEST_WORKER_ID == undefined) {
   app.listen(8080);
+  dbConnect();
+} else {
+  dbConnectTest();
 }
-
-dbConnect();
 
 export default app;

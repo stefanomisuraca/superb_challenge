@@ -11,7 +11,7 @@
     ]
   },
   "scripts": {
-    "test": "node --experimental-vm-modules node_modules/.bin/jest --coverage --runInBand"
+    "test": "node --experimental-vm-modules node_modules/.bin/jest --coverage --runInBand --detectOpenHandles"
   },
   "author": "Stefano",
   "license": "ISC",

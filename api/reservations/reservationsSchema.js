@@ -40,15 +40,27 @@ reservationSchema.pre("save", async function(next) {
     let errors = [];
     
     const shift = await Shift.findById(this.shift);
+    const reservations = await Reservation.find({shift});
     const table = await Table.findById(this.table);
 
     const reservationTime = moment.range(this.reservedFrom, this.reservedTo);
     const shiftTime = moment.range(shift.start, shift.end);
+    const tableTime = moment.range(table.reservedFrom, table.reservedTo);
+
     
     if(!shiftTime.contains(reservationTime)) errors.push("reserved time must be within shift range");
     if(!isReservedOneHour(this)) errors.push("reservation must be exactly one hour");
     if(!(this.reservedFrom < this.reservedTo)) errors.push("Reversation start is bigger than end");
     if(this.customers > table.seats) errors.push("Too many customer for this table");
+    for(let i=0; i<reservations.length; i++) {
+        const thisTableTime = moment.range(this.reservedFrom, this.reservedTo);
+        const tableTime = moment.range(reservations[i].reservedFrom, reservations[i].reservedTo);
+        const isAlreadyReserved = thisTableTime.overlaps(tableTime);
+        if(reservations[i].table._id.equals(table._id) && reservations[i].shift._id.equals(shift._id) && isAlreadyReserved) {
+            errors.push("This table is already reserved");
+            break;
+        }
+    }
     
     errors.length > 0 ? next(errors) : next();
 });

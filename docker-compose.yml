@@ -21,6 +21,12 @@ services:
       - 27017:27017
     volumes:
       - ~/apps/mongo:/data/db
+  mongodb_test:
+    image: mongo
+    container_name: mongodb_test
+    command: mongod --port 27018
+    ports:
+      - 27018:27018
 volumes:
   v1:
   mongo:

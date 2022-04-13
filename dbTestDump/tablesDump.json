@@ -1,0 +1,8 @@
+{"_id":{"$oid":"62568f7ea397656fe6bd8cbf"},"restaurant":{"$oid":"62568f02a397656fe6bd8caa"},"seats":2,"__v":0}
+{"_id":{"$oid":"62568f7fa397656fe6bd8cc1"},"restaurant":{"$oid":"62568f02a397656fe6bd8caa"},"seats":2,"__v":0}
+{"_id":{"$oid":"62568f84a397656fe6bd8cc3"},"restaurant":{"$oid":"62568f02a397656fe6bd8caa"},"seats":4,"__v":0}
+{"_id":{"$oid":"62568f88a397656fe6bd8cc5"},"restaurant":{"$oid":"62568f02a397656fe6bd8caa"},"seats":6,"__v":0}
+{"_id":{"$oid":"62568f94a397656fe6bd8cc7"},"restaurant":{"$oid":"62568f14a397656fe6bd8cac"},"seats":2,"__v":0}
+{"_id":{"$oid":"62568f98a397656fe6bd8cc9"},"restaurant":{"$oid":"62568f14a397656fe6bd8cac"},"seats":4,"__v":0}
+{"_id":{"$oid":"62568f9ba397656fe6bd8ccb"},"restaurant":{"$oid":"62568f14a397656fe6bd8cac"},"seats":8,"__v":0}
+{"_id":{"$oid":"62568f9ea397656fe6bd8ccd"},"restaurant":{"$oid":"62568f14a397656fe6bd8cac"},"seats":10,"__v":0}

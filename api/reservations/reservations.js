@@ -14,7 +14,20 @@ reservationsRouter.get("/:id", async (req, res) => {
 
 reservationsRouter.get("/", async (req, res) => {
     try {
-        res.json(await Reservation.find({}));
+        res.json(await Reservation.find({}).populate({ 
+            path: 'shift',
+            populate: {
+                path: 'restaurant',
+                model: 'Restaurant'
+            }
+        })
+        .populate({ 
+            path: 'table',
+            populate: {
+                path: 'restaurant',
+                model: 'Restaurant'
+            } 
+    }));
     } catch(e) {
         res.status(400);
         res.json(e);
@@ -47,13 +60,13 @@ reservationsRouter.get("/shifts/:id", async (req, res) => {
 
 reservationsRouter.post("/", async (req, res) => {
     let body = req.body;
-    try {
-        const newReservation = await Reservation.create(body);
-        res.json(newReservation);
-    } catch(e) {
-        res.status(400);
-        res.json(e);
-    }
+        const reservation = new Reservation(body);
+        reservation.save()
+            .then(newReservation => res.json(newReservation))
+            .catch(e => {
+                console.log(e);
+                res.json(e)
+            });
 });
 
 reservationsRouter.patch("/:id", async (req, res) => {
@@ -62,7 +75,7 @@ reservationsRouter.patch("/:id", async (req, res) => {
     
     for(const [k, v] of Object.entries(req.body)) reservation[k] = v;
     
-    reservation.save().then((updatedReservation) => {
+    reservation.save().then(updatedReservation => {
         res.json(updatedReservation);
     }).catch(e => {
         res.status(400);
@@ -73,7 +86,7 @@ reservationsRouter.patch("/:id", async (req, res) => {
 reservationsRouter.delete("/:id", async (req, res) => {
     try {
         Reservation.deleteOne({_id: req.params.id});
-        res.status(201);
+        res.status(204);
         res.json();
     } catch (e) {
         res.status(401);

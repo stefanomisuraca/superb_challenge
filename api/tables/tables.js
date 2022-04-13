@@ -28,6 +28,16 @@ tablesRouter.get("/restaurants/:id", async (req, res) => {
     }
 });
 
+tablesRouter.get("/", async (req, res) => {
+    try{
+        let tables = await Table.find({}).populate("restaurant");
+        res.json(tables);
+    } catch(e) {
+        res.status(500);
+        res.json(e);
+    }
+});
+
 tablesRouter.patch("/:id", async (req, res) => {
     try {
         const table = await Table.findOneAndUpdate({_id: req.params.id}, req.body, {new: true});
