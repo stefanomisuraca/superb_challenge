@@ -45,8 +45,6 @@ reservationSchema.pre("save", async function(next) {
 
     const reservationTime = moment.range(this.reservedFrom, this.reservedTo);
     const shiftTime = moment.range(shift.start, shift.end);
-    const tableTime = moment.range(table.reservedFrom, table.reservedTo);
-
     
     if(!shiftTime.contains(reservationTime)) errors.push("reserved time must be within shift range");
     if(!isReservedOneHour(this)) errors.push("reservation must be exactly one hour");
